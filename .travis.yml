@@ -4,7 +4,8 @@ services:
 env:
   - NPM_TARGET=test
   - NPM_TARGET=lint
-  - NPM_TARGET=coverage
+  - NPM_HELLOWORLD=abc
+  - NPM_HELLOWORLD=def
 
 before_install:
   - docker pull node:8-onbuild
@@ -13,6 +14,7 @@ install:
 
 script:
   - docker run --rm probot-hello npm run $NPM_TARGET 
+  - echo "#NPM_HELLOWORLD"
 
 after_success:
   - set -x -v;
